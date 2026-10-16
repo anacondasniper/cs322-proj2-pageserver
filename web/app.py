@@ -11,6 +11,8 @@ def hello():
 
 @app.route('/<page>')
 def serve(page):
+    if ".." in page or "//" in page or "~" in page:
+        abort(403)
     try:
         return render_template(page), 200
     except TemplateNotFound:
