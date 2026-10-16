@@ -11,7 +11,7 @@ def hello():
 
 @app.route('/<page>')
 def serve(page):
-    if ".." in page or "//" in page or "~" in page:
+    if ".." in page or "//" in page or "~" in page or page.startswith("/"):
         abort(403)
     try:
         return render_template(page), 200
